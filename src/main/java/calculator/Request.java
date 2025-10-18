@@ -7,7 +7,7 @@ import java.util.List;
 public class Request {
 
     private final String input;
-    private final List<String> list = Arrays.asList("?", "*", "+", "(", ")", "[", "]", "{", "}");
+    private final List<String> list = Arrays.asList("?", "*", "+", "(", ")", "[", "]", "{", "}", ".", "\\");
 
     public Request(String input) {
         this.input = input;
@@ -47,7 +47,7 @@ public class Request {
 
             inputNum = input.substring(endIdx + 2);
         }
-
+        System.out.println("separate: " + separator);
         String[] numbersArray = inputNum.split(separator);
         for (String number : numbersArray) {
             numbers.add(Integer.parseInt(number));
