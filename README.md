@@ -63,3 +63,12 @@
 
 - camp.nextstep.edu.missionutils에서 제공하는 Console API를 사용하여 구현해야 한다.
 - 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
+
+<br>
+
+### 구현 기능 목록
+
+- 0 또는 null 입력 시 0 출력
+- 커스텀 구분자 없는 경우, 결과 출력
+- 커스텀 구분자 있는 경우, 경과 출력
+- 형식에 맞지 않는 경우 예외 처리
