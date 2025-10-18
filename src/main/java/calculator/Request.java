@@ -1,10 +1,13 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Request {
 
-    private String input;
+    private final String input;
+    private final List<String> list = Arrays.asList("?", "*", "+", "(", ")", "[", "]", "{", "}");
 
     public Request(String input) {
         this.input = input;
@@ -21,7 +24,31 @@ public class Request {
     }
 
     public void separate(ArrayList<Integer> numbers) {
-        String[] numbersArray = input.split(",|:");
+        String separator = ",|:";
+        String inputNum = input;
+
+        // input이 0 or null 인 경우
+        if (input.isEmpty() || input.equals("0")) {
+            return;
+        }
+
+        // Custom 구분자 존재 여부 확인
+        if (input.startsWith("//")) {
+            int endIdx = input.indexOf("\\n");
+            if (endIdx == -1) {
+                throw new IllegalArgumentException("Error");
+            }
+            String newSeparator = input.substring(2, endIdx);
+            if (list.contains(newSeparator)) {
+                separator += "|\\" + newSeparator;
+            } else {
+                separator += "|" + newSeparator;
+            }
+
+            inputNum = input.substring(endIdx + 2);
+        }
+
+        String[] numbersArray = inputNum.split(separator);
         for (String number : numbersArray) {
             numbers.add(Integer.parseInt(number));
         }
