@@ -7,7 +7,7 @@ import java.util.List;
 public class Request {
 
     private final String input;
-    private final List<String> list = Arrays.asList("?", "*", "+", "(", ")", "[", "]", "{", "}", ".", "\\");
+    private final List<String> list = Arrays.asList("?", "*", "+", "(", ")", "[", "]", "{", "}", ".", "\\", "$", "^", "|");
 
     public Request(String input) {
         this.input = input;
