@@ -47,10 +47,16 @@ public class Request {
 
             inputNum = input.substring(endIdx + 2);
         }
-        System.out.println("separate: " + separator);
+
         String[] numbersArray = inputNum.split(separator);
-        for (String number : numbersArray) {
-            numbers.add(Integer.parseInt(number));
+        try{
+            for (String number : numbersArray) {
+                if(Integer.parseInt(number) < 0) throw new IllegalArgumentException("Error");
+                numbers.add(Integer.parseInt(number));
+            }
+        }catch(Exception e){
+            throw new IllegalArgumentException("Error");
         }
+
     }
 }
